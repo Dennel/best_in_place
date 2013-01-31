@@ -55,8 +55,8 @@ module BestInPlace
       out << " data-html-attrs='#{opts[:html_attrs].to_json}'" unless opts[:html_attrs].blank?
       if opts[:display_content]
         out << " data-original-content='#{opts[:display_content]}'"
-      elsif
-        out << " data-original-content='#{attribute_escape(real_object.send(field))}'" if opts[:display_as] || opts[:display_with]
+      elsif opts[:display_as] || opts[:display_with]
+        out << " data-original-content='#{attribute_escape(real_object.send(field))}'"
       end
       out << " data-value='#{attribute_escape(value)}'" if value
 
