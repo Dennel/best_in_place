@@ -15,6 +15,10 @@ module BestInPlace
       opts[:collection] ||= []
       field = field.to_s
 
+      if opts[:type] == :time
+        opts[:type] = :date
+      end
+
       display_value = build_value_for(real_object, field, opts)
 
       collection = nil
@@ -53,7 +57,7 @@ module BestInPlace
       out << " data-type='#{opts[:type]}'"
       out << " data-inner-class='#{opts[:inner_class]}'" if opts[:inner_class]
       out << " data-html-attrs='#{opts[:html_attrs].to_json}'" unless opts[:html_attrs].blank?
-      out << " data-original-content='#{attribute_escape(real_object.send(field))}'" if opts[:display_as] || opts[:display_with]
+      # out << " data-original-content='#{attribute_escape(real_object.send(field))}'" if opts[:display_as] || opts[:display_with]
       out << " data-value='#{attribute_escape(value)}'" if value
 
       if opts[:data] && opts[:data].is_a?(Hash)
