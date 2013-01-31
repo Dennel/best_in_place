@@ -58,6 +58,7 @@ module BestInPlace
       elsif opts[:display_as] || opts[:display_with]
         out << " data-original-content='#{attribute_escape(real_object.send(field))}'"
       end
+      out << "data-mask='#{opts[:mask]}'" if opts[:mask]
       out << " data-value='#{attribute_escape(value)}'" if value
 
       if opts[:data] && opts[:data].is_a?(Hash)
